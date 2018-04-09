@@ -32,6 +32,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -69,6 +70,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     private SpeechRecognizer mSpeechRecognizer;
     private Intent mSpeechRecognizerIntent;
     private boolean mIslistening;
+    private String status;
 
 
     //==============================================================================================
@@ -150,7 +152,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
         SpeechRecognitionListener listener = new SpeechRecognitionListener();
         mSpeechRecognizer.setRecognitionListener(listener);
-        mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
+        //mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
     }
     /**
      * Creates and starts the camera.  Note that this uses a higher resolution in comparison
@@ -181,10 +183,11 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         }
 
         mCameraSource = new CameraSource.Builder(context, detector)
-                .setRequestedPreviewSize(1280, 720)
+                //.setRequestedPreviewSize(1280, 720)
                 //.setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setFacing(CameraSource.CAMERA_FACING_FRONT)
-                .setRequestedFps(60.0f)
+                .setRequestedFps(25.0f)
+                .setAutoFocusEnabled(true)
                 .build();
     }
 
@@ -220,7 +223,19 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         }
         mSpeechRecognizer.destroy();
     }
-
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        //Log.i("test", "multiTouchCount : " + event.getPointerCount());
+        //Log.i("test", "action : " + event.getAction());
+        if (event.getAction() == MotionEvent.ACTION_DOWN ){
+            Log.i("test", "action : " + event.getAction() + " count:"+event.getPointerCount() + " Down");
+            caption="";
+            if(mIslistening == true)
+                mSpeechRecognizer.stopListening();
+            mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
+        }
+        return super.onTouchEvent(event);
+    }
     /**
      * Callback for the result from requesting permissions. This method
      * is invoked for every call on {@link #requestPermissions(String[], int)}.
@@ -347,6 +362,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             mOverlay.add(mFaceGraphic);
             mFaceGraphic.updateFace(face);
             mFaceGraphic.setCaptions(caption);
+            mFaceGraphic.setStatus(status);
         }
 
         /**
@@ -376,6 +392,8 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         @Override
         public void onBeginningOfSpeech()
         {
+            status = "Listening ... ";
+            mIslistening=true;
             Log.d(TAG, "onBeginingOfSpeech");
         }
 
@@ -388,12 +406,15 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         @Override
         public void onEndOfSpeech()
         {
+            status = "Finished";
+            mIslistening = false;
             Log.d(TAG, "onEndOfSpeech");
         }
 
         @Override
         public void onError(int error)
         {
+            mIslistening = false;
             //mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
             String error_msg = getErrorText(error);
             Log.d(TAG, "error = " + error_msg);
@@ -428,12 +449,28 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         @Override
         public void onReadyForSpeech(Bundle params)
         {
+            mIslistening = true;
+            status = "Listening ... ";
             Log.d(TAG, "onReadyForSpeech"); //$NON-NLS-1$
         }
 
         @Override
         public void onResults(Bundle results)
         {
+            status = "Finished";
+            mIslistening = false;
+            Log.d(TAG, "Final Results"); //$NON-NLS-1$
+            ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            // matches are the return values of speech recognition engine
+            // Use these values for whatever you wish to do
+            if(matches==null){
+                return;
+            }
+            for(int i = 0 ; i<matches.size(); i++) {
+                String output = matches.get(i);
+                Log.d(TAG, output);
+                caption = output;
+            }
             Log.d(TAG, "onResults"); //$NON-NLS-1$
             //mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
         }

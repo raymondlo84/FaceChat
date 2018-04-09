@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.android/build-cache/f398dbb7035bf7852e19a0ccfb7131466d2347df/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d00981db16e297a76c95aba4372d200b1e2420d2">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_61ee489069187e68ce16bd2035fe08075b036649/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.android/build-cache/787fa745547b5cddc94745f9f615597591ef15b9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_70715189e5744599993e10af7742d3464ddc82a1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.android/build-cache/0d58f06fc980a8ceb42531727f11bca92d42aa6f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cdf99f9baafaf0cee0f1bf63ec19a1946e026ad8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_663f7c6dfca56886eedf284cdc5ef7dd728db526/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.android/build-cache/aebd9a4b016bd5c453b7a9c72149750f5dc4348e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f73e02badf8404a0c3bab95d94ec28ebe9467210">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ce42d2edc7ee3e8b1da5c145fa7e1264e151ebe2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.android/build-cache/7bf815fb6db52626f42d9a151b137aef6e44d295/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e5f4e44ef932f9ce4e19dde2e24375ebee06e686">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7c731d158012661b3c9b037ab78c2a19a15cf598/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="09cc0aa287e35a40f57b5db33837a7e86c6ad4e5">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_e78a954253a4ccd2df19756a5c92c846f8001b38/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.android/build-cache/31acfc3f34a75f3229e679ddacd1aa1672e819d7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="670df81539ab71918d49b186598b7eff08ef6563">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d29cae8f651df2364a2b5837198c5e27d84d03ff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.android/build-cache/25d0e84784b8a4cb2fddfdfc7cb2b54badef655a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c61af9ec6c10fbfa80fd34abc2c3483d051548b1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/raymondlo84/.gradle/caches/modules-2/files-2.1/com.google.protobuf.nano/protobuf-javanano/3.1.0/5110f05deac8f15244897b3f70e9ce413468771d/protobuf-javanano-3.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5110f05deac8f15244897b3f70e9ce413468771d">
+        <dex dex="/Users/raymondlo84/Documents/Raymond_PhD_6/EyeTap_Android_Vision/FaceChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/protobuf-javanano-3.1.0_8e6fe80586d09acb388b39bb269d4e5b209306a7/classes.dex" />
+    </item>
+
+</items>

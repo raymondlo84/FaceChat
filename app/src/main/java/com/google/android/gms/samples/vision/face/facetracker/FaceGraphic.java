@@ -31,9 +31,9 @@ import java.util.List;
  */
 class FaceGraphic extends GraphicOverlay.Graphic {
     private static final float FACE_POSITION_RADIUS = 10.0f;
-    private static final float ID_TEXT_SIZE = 40.0f;
-    private static final float ID_Y_OFFSET = 50.0f;
-    private static final float ID_X_OFFSET = -50.0f;
+    private static final float ID_TEXT_SIZE = 80.0f;
+    private static final float ID_Y_OFFSET = 60.0f;
+    private static final float ID_X_OFFSET = -70.0f;
     private static final float BOX_STROKE_WIDTH = 5.0f;
     private static final float EYE_SIZE = 10.0f;
 
@@ -56,6 +56,7 @@ class FaceGraphic extends GraphicOverlay.Graphic {
     private int mFaceId;
     private float mFaceHappiness;
     private String captions;
+    private String mstatus;
 
     FaceGraphic(GraphicOverlay overlay) {
         super(overlay);
@@ -74,6 +75,9 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         mBoxPaint.setColor(selectedColor);
         mBoxPaint.setStyle(Paint.Style.STROKE);
         mBoxPaint.setStrokeWidth(BOX_STROKE_WIDTH);
+
+        captions = "";
+        mstatus = "";
     }
 
     void setId(int id) {
@@ -93,6 +97,10 @@ class FaceGraphic extends GraphicOverlay.Graphic {
     public void setCaptions(String captions){
         this.captions = captions;
     }
+    public void setStatus(String status){
+        this.mstatus = status;
+    }
+
     /**
      * Draws the face annotations for position on the supplied canvas.
      */
@@ -107,13 +115,14 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         float x = translateX(face.getPosition().x + face.getWidth() / 2);
         float y = translateY(face.getPosition().y + face.getHeight() / 2);
         canvas.drawCircle(x, y, FACE_POSITION_RADIUS, mFacePositionPaint);
-        canvas.drawText("id: " + mFaceId, x + ID_X_OFFSET, y + ID_Y_OFFSET, mIdPaint);
-        canvas.drawText("happiness: " + String.format("%.2f", face.getIsSmilingProbability()), x - 2*ID_X_OFFSET, y - ID_Y_OFFSET, mIdPaint);
-        canvas.drawText("right: " + String.format("%.2f", face.getIsRightEyeOpenProbability()), x - 2*ID_X_OFFSET, y - ID_Y_OFFSET * 2, mIdPaint);
-        canvas.drawText("left: " + String.format("%.2f", face.getIsLeftEyeOpenProbability()), x - 2*ID_X_OFFSET, y - ID_Y_OFFSET*3, mIdPaint);
-        canvas.drawText("EulerZ: " + String.format("%.2f", face.getEulerZ()),  x - 2*ID_X_OFFSET, y - ID_Y_OFFSET*4, mIdPaint);
-        canvas.drawText("EulerY: " + String.format("%.2f", face.getEulerY()),  x - 2*ID_X_OFFSET, y - ID_Y_OFFSET*5, mIdPaint);
-        canvas.drawText("Captions: " + captions,  x + 5*ID_X_OFFSET, y - ID_Y_OFFSET*8, mIdPaint);
+        canvas.drawText("id: " + mFaceId, x + ID_X_OFFSET, y + ID_Y_OFFSET*2, mIdPaint);
+        canvas.drawText("happiness: " + String.format("%.2f", face.getIsSmilingProbability()), x - 3*ID_X_OFFSET, y - ID_Y_OFFSET, mIdPaint);
+        canvas.drawText("right: " + String.format("%.2f", face.getIsRightEyeOpenProbability()), x - 3*ID_X_OFFSET, y - ID_Y_OFFSET * 2, mIdPaint);
+        canvas.drawText("left: " + String.format("%.2f", face.getIsLeftEyeOpenProbability()), x - 3*ID_X_OFFSET, y - ID_Y_OFFSET*3, mIdPaint);
+        canvas.drawText("EulerZ: " + String.format("%.2f", face.getEulerZ()),  x - 3*ID_X_OFFSET, y - ID_Y_OFFSET*4, mIdPaint);
+        canvas.drawText("EulerY: " + String.format("%.2f", face.getEulerY()),  x - 3*ID_X_OFFSET, y - ID_Y_OFFSET*5, mIdPaint);
+        canvas.drawText(captions,  x + 3*ID_X_OFFSET, y + ID_Y_OFFSET*8, mIdPaint);
+        canvas.drawText(mstatus,  100, 100, mIdPaint);
 
         // Draws a bounding box around the face.
         float xOffset = scaleX(face.getWidth() / 2.0f);
