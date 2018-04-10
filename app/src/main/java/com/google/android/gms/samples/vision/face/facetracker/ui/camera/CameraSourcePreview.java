@@ -15,8 +15,12 @@
  */
 package com.google.android.gms.samples.vision.face.facetracker.ui.camera;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.support.v4.app.ActivityCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -81,9 +85,15 @@ public class CameraSourcePreview extends ViewGroup {
         }
     }
 
-    private void startIfReady() throws IOException {
+    @SuppressLint("MissingPermission")
+    private void startIfReady() {
         if (mStartRequested && mSurfaceAvailable) {
-            mCameraSource.start(mSurfaceView.getHolder());
+            try { //not going to check permission because we should have done that outside
+                mCameraSource.start(mSurfaceView.getHolder());
+            }catch(IOException e){
+                Log.e(TAG, "Could not start camera source.", e);
+                return;
+            }
             if (mOverlay != null) {
                 Size size = mCameraSource.getPreviewSize();
                 int min = Math.min(size.getWidth(), size.getHeight());
@@ -105,11 +115,7 @@ public class CameraSourcePreview extends ViewGroup {
         @Override
         public void surfaceCreated(SurfaceHolder surface) {
             mSurfaceAvailable = true;
-            try {
-                startIfReady();
-            } catch (IOException e) {
-                Log.e(TAG, "Could not start camera source.", e);
-            }
+            startIfReady();
         }
 
         @Override
@@ -158,11 +164,7 @@ public class CameraSourcePreview extends ViewGroup {
             getChildAt(i).layout(0, 0, childWidth, childHeight);
         }
 
-        try {
-            startIfReady();
-        } catch (IOException e) {
-            Log.e(TAG, "Could not start camera source.", e);
-        }
+        startIfReady();
     }
 
     private boolean isPortraitMode() {
